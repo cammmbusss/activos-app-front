@@ -1,9 +1,10 @@
 import { useState } from "react"
-
+import { useNavigate } from "react-router-dom"
 
 
 function Login() {
 
+    const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -26,6 +27,8 @@ function Login() {
             console.log("Respuesta:",data);
 
             localStorage.setItem("token", data.token);
+
+            navigate("/dashboard");
 
         }catch(error){
             console.error("Error al iniciar sesión:", error);
