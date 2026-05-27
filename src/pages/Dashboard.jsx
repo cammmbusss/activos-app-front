@@ -32,7 +32,18 @@ function Dashboard() {
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-white p-5 rounded-xl shadow-sm border border-zinc-200">
+                    <div onClick={() => navigate("/assets/new")} 
+                        className="
+                        bg-white
+                        p-5
+                        rounded-xl
+                        shadow-sm
+                        border
+                        border-zinc-200
+                        cursor-pointer
+                        hover:bg-zinc-50
+                        transition-colors
+                    ">
                         <h3 className="font-semibold text-zinc-900">
                             Activos
                         </h3>

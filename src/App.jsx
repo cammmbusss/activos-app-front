@@ -2,6 +2,7 @@ import Dashboard from "./pages/Dashboard"
 import Login from "./pages/Login"
 import { Routes, Route } from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute"
+import CreateAsset from "./pages/CreateAsset"
 
 function App() {
   return (
@@ -12,6 +13,14 @@ function App() {
         element={
           <ProtectedRoute>
           <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/assets/new"
+        element={
+          <ProtectedRoute>
+            <CreateAsset />
           </ProtectedRoute>
         }
       />
