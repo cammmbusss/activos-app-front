@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from "react";
 
 function Dashboard() {
     const navigate = useNavigate()
+    const [openAssets, setopenAssets] = useState(false)
 
     function handleLogout() {
         localStorage.removeItem("token")
@@ -31,8 +33,8 @@ function Dashboard() {
                     Bienvenido al panel principal del sistema
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div onClick={() => navigate("/assets/new")} 
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                    <div onClick={() => setopenAssets(!openAssets)} 
                         className="
                         bg-white
                         p-5
@@ -50,8 +52,24 @@ function Dashboard() {
                         <p className="text-sm text-zinc-600 mt-2">
                             Gestionar activos registrados.
                         </p>
+                        {openAssets && (
+                        <div className="mt-4 space-y-2">
+                            <button
+                                onClick={() => navigate("/assets/new")}
+                                className="w-full text-left px-3 py-2 rounded-md hover:bg-zinc-100 text-sm"
+                            >
+                                Nuevo Activo
+                            </button>
+                            <button
+                                onClick={() => navigate("/assets")}
+                                className="w-full text-left px-3 py-2 rounded-md hover:bg-zinc-100 text-sm"
+                            >
+                                Ver Activos
+                            </button>
+                        </div>
+                        )}
                     </div>
-
+                    
                     <div className="bg-white p-5 rounded-xl shadow-sm border border-zinc-200">
                         <h3 className="font-semibold text-zinc-900">
                             Reportes
@@ -61,6 +79,7 @@ function Dashboard() {
                         </p>
                     </div>
 
+                    
                     <div className="bg-white p-5 rounded-xl shadow-sm border border-zinc-200">
                         <h3 className="font-semibold text-zinc-900">Configuración</h3>
                         <p className="text-sm text-zinc-600 mt-2">

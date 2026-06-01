@@ -3,6 +3,8 @@ import Login from "./pages/Login"
 import { Routes, Route } from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute"
 import CreateAsset from "./pages/CreateAsset"
+import Assets from "./pages/Assets"
+import AssetDetail from "./pages/AssetDetail"
 
 function App() {
   return (
@@ -21,6 +23,22 @@ function App() {
         element={
           <ProtectedRoute>
             <CreateAsset />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/assets"
+        element={
+          <ProtectedRoute>
+            <Assets />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/assets/:id"
+        element={
+          <ProtectedRoute>
+            <AssetDetail />
           </ProtectedRoute>
         }
       />
